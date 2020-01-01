@@ -19,7 +19,9 @@ jobs:
         sudo apt install libusb-1.0-0-dev
     - name: make lib
       run: cd src; make
-    - name: make binding for electron
-      run: cd bindings/electron; make
+    - name: make electron binding for Ubuntu
+      run: |
+        sudo apt install swig
+        cd bindings/electron; make
 
 
