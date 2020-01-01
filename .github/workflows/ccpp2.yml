@@ -20,6 +20,7 @@ jobs:
     - name: make lib
       run: cd src; make
     - name: make electron binding for Ubuntu
+      if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt install swig
         cd bindings/electron; make
