@@ -17,5 +17,9 @@ jobs:
       run: |
         sudo apt install libudev-dev
         sudo apt install libusb-1.0-0-dev
-    - name: make
+    - name: make lib
       run: cd src; make
+    - name: make binding for electron
+      run: cd bindings/electron; make
+
+
