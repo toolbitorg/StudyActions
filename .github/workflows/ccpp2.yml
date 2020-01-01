@@ -10,6 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: apt install
-      run: sudo apt install libusb-1.0-0-dev
+      run: |
+        sudo apt install libudev-dev
+        sudo apt install libusb-1.0-0-dev
     - name: make
       run: cd src; make
