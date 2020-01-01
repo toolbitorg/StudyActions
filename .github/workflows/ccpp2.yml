@@ -20,11 +20,10 @@ jobs:
     - name: make lib
       run: cd src; make
 
-    - name: Setup node
+    - name: make electron binding for Ubuntu
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
-    - name: make electron binding for Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt install swig
