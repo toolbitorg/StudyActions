@@ -19,7 +19,6 @@ jobs:
         sudo apt install libusb-1.0-0-dev
     - name: make lib
       run: cd src; make
-
     - name: make electron binding for Ubuntu
     - uses: actions/setup-node@v1
       with:
