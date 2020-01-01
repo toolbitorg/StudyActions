@@ -26,9 +26,9 @@ jobs:
     - name: make electron binding for Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
-        swig -version
         npm install -g node-gyp
         sudo apt install swig
+        swig -version
         cd bindings/electron; make
 
 
