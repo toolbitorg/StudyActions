@@ -8,7 +8,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
+#        os: [ubuntu-latest, windows-latest, macos-latest]
     
     steps:
     - uses: actions/checkout@v1
@@ -25,6 +26,7 @@ jobs:
     - name: make electron binding for Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
+        swig -version
         npm install -g node-gyp
         sudo apt install swig
         cd bindings/electron; make
