@@ -9,8 +9,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: cd src
-      run: cd src
     - name: make
-      run: make
+      run: cd src; make
 
