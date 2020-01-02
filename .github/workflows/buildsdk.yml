@@ -33,7 +33,6 @@ jobs:
         sudo make install        
     - name: Install swig for windows
       if: matrix.os == 'windows-latest'
-      shell: bash
       run: |
         curl -LO "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip"
         unzip swigwin-4.0.1.zip
