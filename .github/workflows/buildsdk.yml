@@ -35,6 +35,8 @@ jobs:
       shell: bash
       run: |
         curl -LO "https://ja.osdn.net/projects/sfnet_swig/downloads/swigwin/swigwin-4.0.1/swigwin-4.0.1.zip"
+        ls
+        unzip swigwin-4.0.1.zip
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
