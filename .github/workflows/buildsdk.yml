@@ -55,7 +55,7 @@ jobs:
        path: bindings/electron/build/build/Release
     - name: Build GUI application
       run: |
-        npm install -D electron-packager
         cd bindings/electron/app/ToolbitDMM
+        npm install -g electron-packager
         make
         
