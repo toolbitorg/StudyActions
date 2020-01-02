@@ -3,11 +3,11 @@ name: Toolbit SDK CI
 on: [push]
 
 jobs:
-  build_lib:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
 #       os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v1
@@ -17,14 +17,9 @@ jobs:
         sudo apt install libudev-dev
         sudo apt install libusb-1.0-0-dev
     - name: Build lib
-      run: cd src; make
-
-  build_bindings:
-    needs: build_lib
-    runs-on: ubuntu-latest
-    steps:
+      run: cd src; make  
     - name: Install swig
-      if: matrix.os == 'ubuntu-latest'
+      if: "matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'"
       run: |
         wget http://prdownloads.sourceforge.net/swig/swig-4.0.1.tar.gz
         tar xvzf swig-4.0.1.tar.gz
