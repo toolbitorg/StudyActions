@@ -19,7 +19,7 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: brew install pcre           # for swig
     - name: Build lib
-      run: cd src; make 
+      run: cd src; make 0
     - name: Install swig for ubuntu/macos
       if: "matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'"
       run: |
@@ -44,9 +44,15 @@ jobs:
     - name: Build electron binding
       run: |
         npm install -g node-gyp
-        cd bindings/electron; make 
+        cd bindings/electron
+        make 
     - name: Archive artifacts
       uses: actions/upload-artifact@v1
       with:
        name: tbi.node
        path: bindings/electron/build/build/Release
+    - name: Build GUI application
+      run: |
+        cd bindings/electron/app/ToolbitDMM
+        make
+        
