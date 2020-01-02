@@ -36,9 +36,13 @@ jobs:
       run: |
         curl -LO "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip"
         unzip swigwin-4.0.1.zip
+    - name: Echo path1
+      run: echo %path%
     - name: add path
       run:
         echo "::add-path::./swigwin-4.0.1"
+    - name: Echo path2
+      run: echo %path%
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
