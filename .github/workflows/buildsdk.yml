@@ -3,14 +3,12 @@ name: Toolbit SDK CI
 on: [push]
 
 jobs:
-  build:
-
+  build_lib:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
 #       os: [ubuntu-latest, windows-latest, macos-latest]
-    
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies for Ubuntu
@@ -20,7 +18,11 @@ jobs:
         sudo apt install libusb-1.0-0-dev
     - name: Build lib
       run: cd src; make
-      
+
+  build_bindings:
+    needs: build_lib
+    runs-on: ubuntu-latest
+    steps:
     - name: Install swig
       if: matrix.os == 'ubuntu-latest'
       run: |
@@ -30,12 +32,10 @@ jobs:
         ./configure
         make
         # make check
-        sudo make install
-        
+        sudo make install        
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
-    
     - name: make electron binding for Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
