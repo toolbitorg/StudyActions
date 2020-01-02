@@ -42,7 +42,7 @@ jobs:
         echo $Env:path
     - name: add path
       run:
-        echo "::add-path::./swigwin-4.0.1"
+        echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
     - name: Echo path2
       run: echo $Env:path
     - uses: actions/setup-node@v1
