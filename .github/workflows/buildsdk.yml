@@ -53,8 +53,7 @@ jobs:
         
     - name: A swig path for windows
       if: matrix.os == 'windows-latest'      
-      run: echo "::add-path::~\StudyActions\swigwin-4.0.1"
-#      run: echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
+      run: echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
       
     - uses: actions/setup-node@v1
       with:
