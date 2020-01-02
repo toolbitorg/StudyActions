@@ -34,7 +34,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
-    - name: make electron binding for Ubuntu
+    - name: Build electron binding
       if: "matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'"
       run: |
         npm install -g node-gyp
