@@ -7,8 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
-#       os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies for ubuntu
@@ -36,20 +35,13 @@ jobs:
       run: |
         curl -LO "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip"
         unzip swigwin-4.0.1.zip
-    - name: Echo path1
-      run: |
-        pwd
-        echo $Env:path
-    - name: add path
-      run:
-        echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
-    - name: Echo path2
-      run: echo $Env:path
+    - name: A swig path for windows
+      if: matrix.os == 'windows-latest'      
+      run: echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
     - name: Build electron binding
-#     if: "matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'"
       run: |
         npm install -g node-gyp
         cd bindings/electron; make 
@@ -58,4 +50,3 @@ jobs:
       with:
        name: tbi.node
        path: bindings/electron/build/build/Release
-
