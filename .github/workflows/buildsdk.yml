@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Toolbit SDK CI
 
 on: [push]
 
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-#        os: [ubuntu-latest, windows-latest, macos-latest]
+#       os: [ubuntu-latest, windows-latest, macos-latest]
     
     steps:
     - uses: actions/checkout@v1
@@ -20,9 +20,7 @@ jobs:
         sudo apt install libusb-1.0-0-dev
     - name: make lib
       run: cd src; make
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '8.x'
+      
     - name: build swig
       if: matrix.os == 'ubuntu-latest'
       run: |
@@ -33,10 +31,19 @@ jobs:
         make
         # make check
         sudo make install
+        
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '8.x'
+    
     - name: make electron binding for Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
         npm install -g node-gyp
-        cd bindings/electron; make
-
+        cd bindings/electron; make 
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v1
+      with:
+       name: tbi.node
+       path: bindings\electron\build\build\Release\tbi.node
 
