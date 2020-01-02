@@ -64,9 +64,9 @@ jobs:
       run: |
         npm install -g node-gyp
         cd bindings/electron
-        make 
+        make
 
-     - name: Build GUI application
+    - name: Build GUI application
       run: |
         cd bindings/electron/app/ToolbitDMM
         npm install -g electron-packager
