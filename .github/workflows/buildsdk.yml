@@ -51,7 +51,7 @@ jobs:
         curl -LO "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip"
         unzip swigwin-4.0.1.zip
         
-    - name: A swig path for windows
+    - name: Add swig path for windows
       if: matrix.os == 'windows-latest'      
       run: echo "::add-path::D:\a\StudyActions\StudyActions\swigwin-4.0.1"
       
