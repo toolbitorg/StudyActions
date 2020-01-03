@@ -37,13 +37,15 @@ jobs:
     - name: Install swig for ubuntu/macos
       if: "matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'"
       run: |
-        wget http://prdownloads.sourceforge.net/swig/swig-4.0.1.tar.gz
-        tar xvzf swig-4.0.1.tar.gz
-        cd swig-4.0.1
-        ./configure
-        make
-        # make check
-        sudo make install
+        if [[ ! -e /usr/local/share/swig ]]; then       
+          wget http://prdownloads.sourceforge.net/swig/swig-4.0.1.tar.gz
+          tar xvzf swig-4.0.1.tar.gz
+          cd swig-4.0.1
+          ./configure
+          make
+          # make check
+          sudo make install
+        fi
 
     - name: Install swig for windows
       if: matrix.os == 'windows-latest'
