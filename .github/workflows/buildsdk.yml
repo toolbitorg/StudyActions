@@ -44,6 +44,8 @@ jobs:
           ./configure
           make
           # make check
+        else
+          cd swig-4.0.1
         fi
         sudo make install
 
