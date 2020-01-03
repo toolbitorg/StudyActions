@@ -69,15 +69,15 @@ jobs:
         cd bindings/electron
         make
 
-    - name: Build GUI application
-      run: |
-        cd bindings/electron/app/ToolbitDMM
-        npm install -g electron-packager
-        make
+#    - name: Build GUI application
+#      run: |
+#        cd bindings/electron/app/ToolbitDMM
+#        npm install -g electron-packager
+#        make
         
     - name: Archive artifacts
       uses: actions/upload-artifact@v1
       with:
-       name: tbi.node
-       path: bindings/electron/app/ToolbitDMM/binary-release
+       name: toolbit-lib
+       path: bindings/electron/toolbit-lib
         
