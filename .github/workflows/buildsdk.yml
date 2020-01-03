@@ -62,19 +62,18 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '8.x'
-        
-    - name: Build electron binding
+
+    - name: Build python binding
+      run: |
+        cd bindings/python
+        make       
+      
+    - name: Build node.js binding
       run: |
         npm install -g node-gyp
         cd bindings/electron
         make
 
-#    - name: Build GUI application
-#      run: |
-#        cd bindings/electron/app/ToolbitDMM
-#        npm install -g electron-packager
-#        make
-        
     - name: Archive artifacts
       uses: actions/upload-artifact@v1
       with:
