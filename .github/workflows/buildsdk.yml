@@ -78,6 +78,11 @@ jobs:
     - name: Archive artifacts
       uses: actions/upload-artifact@v1
       with:
+       name: python-samples
+       path: bindings/python/samples       
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v1
+      with:
        name: toolbit-lib
        path: bindings/electron/toolbit-lib
-        
