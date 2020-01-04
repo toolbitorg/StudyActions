@@ -15,7 +15,7 @@ $(TARGET):
 	cp ../../src/HIDAPI/windows/hid.c build
 	cp tbi.i build
 	cp setup_mswin.py build
-	cd build; swig -c++ -pyhton tbi.i
+	cd build; swig -c++ -python tbi.i
 	cd build; CC=gcc python setup_mswin.py build_ext --inplace
 	cp build/tbi.py build/_tbi.so samples
 
