@@ -64,18 +64,17 @@ jobs:
       with:
         node-version: '8.x'
 
+    - name: Build ruby binding
+      run: |
+        cd bindings/ruby
+        make
+
     - name: Build python binding
       run: |
         cd bindings/python
         make     
         python -h  
         python -V
-
-    - name: Build node.js binding
-      run: |
-        npm install -g node-gyp
-        cd bindings/electron
-        make
 
     - name: Archive artifacts
       if: matrix.os == 'windows-latest'
