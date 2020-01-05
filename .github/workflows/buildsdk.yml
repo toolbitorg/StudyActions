@@ -67,7 +67,8 @@ jobs:
     - name: Build python binding
       run: |
         cd bindings/python
-        make       
+        make     
+        python -h  
         python -V
 
     - name: Build node.js binding
