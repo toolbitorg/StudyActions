@@ -70,8 +70,7 @@ jobs:
         make       
 
     - name: Build python
-       run: |
-        python -V
+       run: python -V
 
     - name: Build node.js binding
       run: |
