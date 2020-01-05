@@ -68,7 +68,11 @@ jobs:
       run: |
         cd bindings/python
         make       
-      
+
+    - name: Build python
+       run: |
+        python -V
+
     - name: Build node.js binding
       run: |
         npm install -g node-gyp
