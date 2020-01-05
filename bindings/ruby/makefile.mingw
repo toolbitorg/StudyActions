@@ -16,7 +16,7 @@ $(TARGET):
 	cp tbi.i build
 	cp extconf.rb build
 	cd build; swig -c++ -ruby tbi.i
-	cd build; /mingw64/bin/ruby extconf.rb
+	cd build; ruby extconf.rb
 	cd build; make
 	cp build/tbi.so samples
 
