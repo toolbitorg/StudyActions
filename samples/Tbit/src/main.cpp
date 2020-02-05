@@ -18,6 +18,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     Tbit *tbit = new Tbit();
+	tbit->open();
 
 	if (!tbit->isConnected()) {
 		cout << "Fail to connect to Tbit device" << endl;

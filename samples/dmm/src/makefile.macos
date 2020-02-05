@@ -1,19 +1,20 @@
 BINDIR = ../bin
 OBJDIR = ../build
 INCDIR = -I../../../include -I../../../include/module
-LIBDIR = ../../../lib/gcc
+LIBDIR = ../../../lib/macos
 LIBSRCDIR = ../../../src
 
 CC  = gcc
 CXX = g++
+CFLAGS  = -g -MMD -MP
 CXXFLAGS  = -g -MMD -MP -std=c++11
-LDFLAGS =
-INCLUDE = $(INCDIR) `pkg-config libusb-1.0 --cflags`
+LDFLAGS = -framework IOKit -framework Carbon
+INCLUDE = $(INCDIR)
 
 LIBOBJS = $(LIBDIR)/libtbi.a
-LIBS = $(LIBOBJS) `pkg-config libusb-1.0 libudev --libs` -lrt -lpthread -ludev
+LIBS = $(LIBOBJS)
 
-TARGET = $(BINDIR)/basicdemo
+TARGET = $(BINDIR)/dmm
 CPP_SOURCES = $(wildcard *.cpp)
 
 OBJECTS	= $(addprefix $(OBJDIR)/, $(CPP_SOURCES:.cpp=.o)) $(addprefix $(OBJDIR)/, $(C_SOURCES:.c=.o))
@@ -25,20 +26,26 @@ DEPENDS = $(OBJECTS:.o=.d)
 all: $(TARGET)
 
 $(LIBOBJS): FORCE
-	cd $(LIBSRCDIR); make -f makefile.gcc
+	cd $(LIBSRCDIR); $(MAKE) -f makefile.macos
 
 FORCE:
 
 $(TARGET): $(OBJECTS) $(LIBOBJS)
 	@[ -d $(BINDIR) ] || mkdir -p $(BINDIR)
 	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS)
+	SetFile -t APPL $(TARGET)
 
 $(OBJDIR)/%.o : %.cpp
 	@[ -d $(OBJDIR) ] || mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
 
+$(OBJDIR)/%.o : %.c
+	@[ -d $(OBJDIR)/HIDAPI/mac/ ] || mkdir -p $(OBJDIR)/HIDAPI/mac
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+
 clean:
 	$(RM) $(OBJECTS) $(TARGET) $(DEPENDS)
+	cd $(LIBSRCDIR); make -f makefile.macos clean
 
 
 -include $(DEPENDS)

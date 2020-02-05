@@ -18,6 +18,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	Chopper *chopper = new Chopper();
+	chopper->open();
 	if (!chopper->isConnected())
 		return 0;
 
