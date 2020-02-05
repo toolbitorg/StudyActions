@@ -1,6 +1,7 @@
 const Chopper=require('./tbi.node').Chopper;
 
 chopper = new Chopper();
+chopper.open()
 
 chopper.enableAllUsbPort()
 chopper.getUsbPortStatus()

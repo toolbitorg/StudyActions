@@ -17,6 +17,7 @@ public:
 	bool   openPath(const char *path);
 	bool   close();
 	bool   isConnected();
+	string getVendorName();
 	string getProductName();
 	string getProductRevision();
 	string getProductSerial();
@@ -26,6 +27,7 @@ protected:
 	TbiDevice *mTbiDevice;
 	TbiService *mTbiService;
 	// Toolbit common attribute
+	Attribute mAttVendorName;
 	Attribute mAttProductName;
 	Attribute mAttProductRevision;
 	Attribute mAttProductSerial;
@@ -34,5 +36,7 @@ protected:
 private:
 	
 };
+
+string convertWcharToString(wchar_t* p);
 
 #endif /* TOOLBITSDK_TBI_CORE_H_ */

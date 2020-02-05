@@ -17,6 +17,11 @@ Tbit::~Tbit()
 bool Tbit::open()
 {
 	TbiDeviceManager devm;
+	return openPath(devm.getPathByName("Tbit"));
+}
 
-	return (openPath(devm.getPath("Tbit"))); 
+bool Tbit::open(string serial)
+{
+	TbiDeviceManager devm;
+	return openPath(devm.getPathByNameAndSerial("Tbit", serial));
 }

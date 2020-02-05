@@ -13,11 +13,11 @@ $(TARGET):
 	cp ../../src/*.cpp build
 	cp ../../src/module/*.cpp build
 	cp ../../src/HIDAPI/windows/hid.c build
-	cp tbi.i build
+	cp ../tbi.i build
 	cp binding_mswin.gyp build/binding.gyp
 	cd build; swig -c++ -javascript -node tbi.i
 #	cd build; node-gyp configure build
-#	cp build/build/Release/tbi.node samples
+#	cp -f build/build/Release/tbi.node samples
 	echo Please execute \"node-gyp configure build\" on command prompt and copy build/build/Release/tbi.node to samples
 
 clean:

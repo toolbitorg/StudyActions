@@ -13,12 +13,12 @@ $(TARGET):
 	cp ../../src/*.cpp build
 	cp ../../src/module/*.cpp build
 	cp ../../src/HIDAPI/windows/hid.c build
-	cp tbi.i build
+	cp ../tbi.i build
 	cp extconf.rb build
 	cd build; swig -c++ -ruby tbi.i
-	cd build; ruby extconf.rb
+	cd build; /mingw64/bin/ruby extconf.rb
 	cd build; make
-	cp build/tbi.so samples
+	cp -f build/tbi.so samples
 
 clean:
 	rm -fr build
