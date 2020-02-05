@@ -64,11 +64,16 @@ jobs:
       with:
         node-version: '8.x'
 
+    - name: Build node.js binding
+      run: |
+        npm install -g node-gyp
+        cd bindings/electron
+        make
+
     - name: Build python binding
       run: |
-        cd bindings/python
+        cd bindings/python/toolbit-lib
         make     
-        python -h  
         python -V
 
     - name: Archive artifacts
