@@ -34,9 +34,7 @@ toolbit-lib package is published to the PyPI repository. Please install it as fo
 
 # Usage
 
-For example, to read voltage and current values from DMM, just make an object of Dmm
-
-Dmm class defined by tbi.so and use member functions as follows as:
+### Example
 
 ```python
 from toolbit import Dmm
@@ -46,16 +44,6 @@ dmm.open()
 print(str('%03.3f' % dmm.getVoltage()) + " [V]")
 print(str('%03.3f' % (1000.0 * dmm.getCurrent())) + " [mA]")
 ```
-
-
-require 'tbi'
-
-dmm = Tbi::Dmm.new
-
-puts sprintf("%.3f [V]", dmm.getVoltage())
-puts sprintf("%.3f [mA]", 1000.0 * dmm.getCurrent())
-```
-
 
 <br>
 
