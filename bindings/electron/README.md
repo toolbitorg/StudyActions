@@ -1,41 +1,38 @@
 # Toolbit library for electron
+====
 [![NPM version](https://badge.fury.io/js/toolbit-lib.svg)](https://badge.fury.io/js/toolbit-lib)
-
-## Descripton
 
 
 Build library of Toolbit Interface for electron.
 
-<br>
-
 
 # Installation
 
-## Install dependencies
-
+Toolbit-lib package is published to the npm registry. Please install it as follows as:
 
 ### Ubuntu linux
 ```shell
   sudo apt install libudev-dev
+  npm install toolbit-lib
 ```
 
 ### macOS
-Nothing special
+```shell
+  npm install toolbit-lib
+```
 
 ### Windows
 ```shell
   sudo apt install libudev-dev
+  npm install toolbit-lib
 ```
 
 ### Raspberry Pi
 ```shell
   sudo apt install libudev-dev
-```
-
-## Install toolbit-lib
-```shell
   npm install toolbit-lib
 ```
+
 
 
 node.js
