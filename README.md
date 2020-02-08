@@ -1,19 +1,15 @@
-ToolbitSDK
-====
+#ToolbitSDK
 
-ToolbitSDK is Softare Develepment Kit for measurement and automation system. Target device is a multimeter named as Toolbit DMM for now. Please see the following project page: https://hackaday.io/project/10398-luke-open-framework-multimeterlogger
+ToolbitSDK is Softare Develepment Kit for measurement and automation system. Target device is a multimeter named as **Toolbit DMM** for now. Please see the following project page: https://hackaday.io/project/10398-luke-open-framework-multimeterlogger
 
-Measurement is fundamental to make or hack something. Let's work together to make it as open source!!
+Source code is described by C++ but libraries for the following languages have been released by using SWIG:
+  * C++
+  * [**javascript specially for electron**](bindings/electron/README.md)
+  * [**Python**](bindings/python/toolbit-lib/README.md) 3.5 or later
 
-## Description
+# Reference
+  * http://www.signal11.us/oss/hidapi/
 
-This is not ready for release. The status of the project is as follows as:
-- https://github.com/toolbitorg/ToolbitSDK/projects
-
-## Reference
-
-- http://www.signal11.us/oss/hidapi/
-
-## License
+# License
 
 [GPLv2] Please refer to the LICENSE file in this repository
